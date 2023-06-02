@@ -1,3 +1,4 @@
+package committest;
 
 public class CommitInit {
 
