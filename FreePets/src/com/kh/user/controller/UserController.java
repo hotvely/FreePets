@@ -138,15 +138,46 @@ public class UserController
 	
 	
 	// 회원정보 수정
-	public boolean modifyUserInfo()
+	public boolean modifyUserInfo(String id)
 	{
+		if(!users.containsKey(id))
+			return false;
+		
+		Scanner sc = new Scanner(System.in);
+		String newPw = sc.nextLine();
+		if(!chagePass(users.get(id), users.get(id).getPassword(), newPw))
+			return false;
+		
+		String newName = sc.nextLine();
+		users.get(id).setName(newName);
+		
+		//닉네임 중복처리 관련 코드 추가 필요함.
+		String newNickName = sc.nextLine();
+		users.get(id).setNickName(newNickName);
+		
+		String newPhone = sc.nextLine();
+		users.get(id).setPhone(newPhone);
+		
+		String newEmail =sc.nextLine();
+		users.get(id).setEmail(newEmail);
+		
+				
 		
 		
-		
-		
-		return false;
+		return true;
 	}
 	
+	public boolean chagePass(User user, String oldPw, String newPw)
+	{
+		if(user.getPassword().equals(oldPw))
+		{
+			user.setPassword(newPw);
+			return true;
+		}
+		
+		else
+			return false;
+	}
 	
 	
 	/*매개변수로 유저 받을지 그냥 아이디만 스트링으로 받을지 고민중..*/
@@ -186,6 +217,7 @@ public class UserController
 	// 캐쉬 충전
 	public boolean pushCash(String id, String pass, int money)
 	{
+		
 		if(users.containsKey(id) && users.get(id).getPassword().equals(pass))
 		{
 			users.get(id).setCash(users.get(id).getCash() + money);
@@ -201,7 +233,7 @@ public class UserController
 	// 캐쉬 환급
 	public boolean outputCash(String id, String pass, int money)
 	{
-		
+		// admin 승인 있어야 출금할 수 있도록 추후에 예외처리 필요함
 		if(users.containsKey(id) && users.get(id).getPassword().equals(pass))
 		{
 			users.get(id).setCash(users.get(id).getCash() - money);
