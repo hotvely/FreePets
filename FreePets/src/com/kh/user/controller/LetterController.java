@@ -7,12 +7,12 @@ public class LetterController
 {
 	private ArrayList<Letter> letters = new ArrayList<>();
 	private UserController uc = new UserController();
-	
+
 	
 	// C 쪽지 보내기
 	public boolean sendLetter(String id, String pass, Letter letter)
 	{
-		if(uc.logIn(id, pass))
+		if(uc.logIn(id, pass) != null)
 		{
 			letters.add(letter);
 			

@@ -14,17 +14,17 @@ public class UserController
 	// 이거 제대로 저장소 저장된거 맞아???? 아 오ㅠ
 	
 	//로그인
-	public boolean logIn(String id, String pass) {
+	public User logIn(String id, String pass) {
 		/*
 		 * 아이디, 비밀번호 한번에 싹 다 입력 받아서 
 		 * 그냥 "존재하지 않는 아이디 이거나, 잘못된 비밀번호 입니다." 출력해버리기
 		 * */
 		if(users.containsKey(id) && users.get(id).getPassword().equals(pass))
 		{	//아이디 있으면서 패스워드 동일할때;	
-			return true;
+			return users.get(id);
 		}
 		
-		return false;
+		return null;
 	}
 	
 	
@@ -138,7 +138,7 @@ public class UserController
 	
 	
 	// 회원정보 수정
-	public boolean modifyUserInfo(String id)
+	public boolean updateUser(String id)
 	{
 		if(!users.containsKey(id))
 			return false;
@@ -179,44 +179,7 @@ public class UserController
 			return false;
 	}
 	
-	
-	
-	// 캐쉬 충전
-	public boolean pushCash(String id, String pass, int money)
-	{
 		
-		if(users.containsKey(id) && users.get(id).getPassword().equals(pass))
-		{
-			users.get(id).setCash(users.get(id).getCash() + money);
-			return true;
-		}
-		
-		
-		return false;
-	}
-	
-	
-	
-	// 캐쉬 환급
-	public boolean outputCash(String id, String pass, int money)
-	{
-		// admin 승인 있어야 출금할 수 있도록 추후에 예외처리 필요함
-		if(users.containsKey(id) && users.get(id).getPassword().equals(pass))
-		{
-			users.get(id).setCash(users.get(id).getCash() - money);
-			// 데이터에서 환급금만큼 빼 준 이후에,
-			// 환급과정 func 아래쪽..
-			// TODO
-			
-			return true;
-		}
-		
-		return false;
-	}
-	
-	
-	
-	
 	
 	// 장바구니
 	public void printBasket()

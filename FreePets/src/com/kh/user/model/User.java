@@ -1,5 +1,5 @@
 package com.kh.user.model;
-
+import java.util.*;
 public class User {
 
 	private String id, password;
@@ -7,7 +7,8 @@ public class User {
 	private Integer year,month,day;
 	private Character gender;
 	private String phone, email;
-	private Integer cash;
+	private int totalCash;
+	private ArrayList<CashInfo> cashInfo;
 	
 	public User()
 	{
@@ -15,7 +16,7 @@ public class User {
 	}
 	
 	public User(String id, String password, String name, String nickName, Integer year, Integer month, Integer day,
-			Character gender, String phone, String email, Integer cash) 
+			Character gender, String phone, String email, int totalCash) 
 	{
 		this.id = id;		
 		this.password = password;
@@ -27,7 +28,7 @@ public class User {
 		this.gender = gender;
 		this.phone = phone;
 		this.email = email;
-		this.cash = cash;
+		this.totalCash = totalCash;
 	}
 
 	public String getId() {
@@ -110,13 +111,22 @@ public class User {
 		this.email = email;
 	}
 
-	public Integer getCash() {
-		return cash;
+	public ArrayList<CashInfo> getCashInfo() {
+		return cashInfo;
 	}
 
-	public void setCash(Integer cash) {
-		this.cash = cash;
+	public void setCashInfo(CashInfo cashInfo) {
+		this.cashInfo.add(cashInfo);
+		totalCash += cashInfo.getInoutMoney();
 	}
+
+	public int gettotalCash() {
+		return totalCash;
+	}
+
+//	public void settotalCash(int totalCash) {
+//		this.totalCash = totalCash;
+//	}
 	
 	
 
