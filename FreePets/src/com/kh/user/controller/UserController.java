@@ -14,7 +14,7 @@ public class UserController
 	// 이거 제대로 저장소 저장된거 맞아???? 아 오ㅠ
 	
 	//로그인
-	public boolean lonIn(String id, String pass) {
+	public boolean logIn(String id, String pass) {
 		/*
 		 * 아이디, 비밀번호 한번에 싹 다 입력 받아서 
 		 * 그냥 "존재하지 않는 아이디 이거나, 잘못된 비밀번호 입니다." 출력해버리기
@@ -30,7 +30,7 @@ public class UserController
 	
 	
 	//로그아웃
-	public boolean lonOut() {
+	public boolean logOut() {
 		// 로그아웃 버튼이나 사용자가 로그아웃 인풋을 넣었을 경우에 반응하도록
 		
 		return false;
@@ -161,7 +161,7 @@ public class UserController
 		String newEmail =sc.nextLine();
 		users.get(id).setEmail(newEmail);
 		
-				
+		// 기타 프로필 이미지 등록이라 던가.. 이런 것들 추가 필요할듯?
 		
 		
 		return true;
@@ -177,39 +177,6 @@ public class UserController
 		
 		else
 			return false;
-	}
-	
-	
-	/*매개변수로 유저 받을지 그냥 아이디만 스트링으로 받을지 고민중..*/
-	// 유저간 쪽지 보내기
-	public boolean sendLetter(String id, String pass)
-	{
-		if(users.containsKey(id) &&
-				users.get(id).getPassword().equals(pass))
-		{
-			String detail = null;
-			// 얘는 ... 서버쪽이랑 통신이 되야 할 듯?
-			if(letterCtrl.sendLetter(id, detail))
-			{			
-				//쪽지 보내기 성공!
-				return true;
-			}
-		}
-
-		return false;
-	}
-	
-	
-	
-	// 쪽지 전체 출력하기
-	public void printLetter()
-	{
-		ArrayList<Letter> list = letterCtrl.printLetter();
-		for(Letter elem : list)
-		{
-			// 쪽지들 출력;;
-			System.out.println(elem);
-		}
 	}
 	
 	
