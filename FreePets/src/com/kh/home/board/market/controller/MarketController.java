@@ -6,16 +6,6 @@ public class MarketController {
 		
 	
 	
-	// 추천 기능 --> 로그인 되어 있어야 함
-	public void recommendProduct() {
-		
-	}
-	
-	// 댓글 많은 순서로 보기
-	public void arrayCommentUp() {
-		
-	}
-	
 	// 리뷰 많은 순서로 보기
 	public void arrayReview() {
 		

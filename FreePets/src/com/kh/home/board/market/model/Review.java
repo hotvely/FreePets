@@ -10,6 +10,5 @@ public class Review {
 	private String reviewImgUrl;  // 리뷰 사진
 	
 	private User user;
-	private Product product;
 
 }
