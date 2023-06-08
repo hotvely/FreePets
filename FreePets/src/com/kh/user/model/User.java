@@ -7,6 +7,7 @@ public class User {
 	private Integer year,month,day;
 	private Character gender;
 	private String phone, email;
+	private Integer cash;
 	
 	public User()
 	{
@@ -14,9 +15,9 @@ public class User {
 	}
 	
 	public User(String id, String password, String name, String nickName, Integer year, Integer month, Integer day,
-			Character gender, String phone, String email) 
+			Character gender, String phone, String email, Integer cash) 
 	{
-		this.id = id;
+		this.id = id;		
 		this.password = password;
 		this.name = name;
 		this.nickName = nickName;
@@ -26,6 +27,7 @@ public class User {
 		this.gender = gender;
 		this.phone = phone;
 		this.email = email;
+		this.cash = cash;
 	}
 
 	public String getId() {
@@ -106,6 +108,14 @@ public class User {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public Integer getCash() {
+		return cash;
+	}
+
+	public void setCash(Integer cash) {
+		this.cash = cash;
 	}
 	
 	
