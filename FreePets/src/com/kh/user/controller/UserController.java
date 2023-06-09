@@ -11,7 +11,13 @@ public class UserController
 	
 	LetterController letterCtrl = new LetterController();
 
+	private boolean isLogin = false;
 	// 이거 제대로 저장소 저장된거 맞아???? 아 오ㅠ
+	private void SetLogin(String id, boolean bl)
+	{
+		this.isLogin = bl;
+		users.get(id).setLogin(isLogin);
+	}
 	
 	//로그인
 	public User logIn(String id, String pass) {
@@ -21,7 +27,8 @@ public class UserController
 		 * */
 		if(users.containsKey(id) && users.get(id).getPassword().equals(pass))
 		{	//아이디 있으면서 패스워드 동일할때;	
-			return users.get(id);
+			SetLogin(id, true);
+			return users.get(id);			
 		}
 		
 		return null;
@@ -30,8 +37,13 @@ public class UserController
 	
 	
 	//로그아웃
-	public boolean logOut() {
+	public boolean logOut(String id) {
 		// 로그아웃 버튼이나 사용자가 로그아웃 인풋을 넣었을 경우에 반응하도록
+		if(users.get(id).getLogin())
+		{
+			SetLogin(id, false);
+			return true;
+		}
 		
 		return false;
 	}
@@ -41,6 +53,8 @@ public class UserController
 	//회원가입
 	public boolean signUp()
 	{
+
+		
 		Scanner sc = new Scanner(System.in);
 		// 사용자가 하나씩 데이터를 입력해서 문제가 없을 경우 회원 가입 성공!
 		String id = sc.nextLine();
@@ -140,6 +154,9 @@ public class UserController
 	// 회원정보 수정
 	public boolean updateUser(String id)
 	{
+		if(!isLogin)
+			return false;
+		
 		if(!users.containsKey(id))
 			return false;
 		
