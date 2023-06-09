@@ -18,6 +18,10 @@ public class UserController
 		this.isLogin = bl;
 		users.get(id).setLogin(isLogin);
 	}
+	public boolean GetLogin()
+	{
+		return this.isLogin;
+	}
 	
 	//로그인
 	public User logIn(String id, String pass) {
