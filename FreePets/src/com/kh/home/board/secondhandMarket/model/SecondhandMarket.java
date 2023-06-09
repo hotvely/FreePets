@@ -1,5 +1,7 @@
 package com.kh.home.board.secondhandMarket.model;
 
+import java.util.Objects;
+
 public class SecondhandMarket {
 	
 	private String id; // 사용자 아이디
@@ -10,7 +12,7 @@ public class SecondhandMarket {
 	private String seller; // 판매자
 	private int likeCount; //좋아요 개수
 	private int chatCount;	//연락 온 채팅 개수
-	private String searchProduct; // 상품 검색하기
+	private String searchProduct; // 상품 검색하기	//기능..컨트롤러...
 	
 	public SecondhandMarket() {}
 
@@ -105,6 +107,26 @@ public class SecondhandMarket {
 		return "SecondhandMarket [id=" + id + ", imageurl=" + imageurl + ", productName=" + productName
 				+ ", productPrice=" + productPrice + ", date=" + date + ", seller=" + seller + ", likeCount="
 				+ likeCount + ", chatCount=" + chatCount + ", searchProduct=" + searchProduct + "]";
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(chatCount, date, id, imageurl, likeCount, productName, productPrice, searchProduct, seller);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		SecondhandMarket other = (SecondhandMarket) obj;
+		return chatCount == other.chatCount && Objects.equals(date, other.date) && Objects.equals(id, other.id)
+				&& Objects.equals(imageurl, other.imageurl) && likeCount == other.likeCount
+				&& Objects.equals(productName, other.productName) && productPrice == other.productPrice
+				&& Objects.equals(searchProduct, other.searchProduct) && Objects.equals(seller, other.seller);
 	}
 	
 	//해쉬코드&이퀄스...필요....?
