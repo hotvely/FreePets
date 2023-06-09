@@ -9,6 +9,7 @@ public class User {
 	private String phone, email;
 	private int totalCash;
 	private ArrayList<CashInfo> cashInfo;
+	private boolean isLogin = false;
 	
 	public User()
 	{
@@ -118,6 +119,14 @@ public class User {
 	public void setCashInfo(CashInfo cashInfo) {
 		this.cashInfo.add(cashInfo);
 		totalCash += cashInfo.getInoutMoney();
+	}
+
+	public boolean getLogin() {
+		return isLogin;
+	}
+
+	public void setLogin(boolean isLogin) {
+		this.isLogin = isLogin;
 	}
 
 	public int gettotalCash() {
