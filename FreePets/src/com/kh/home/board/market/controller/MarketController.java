@@ -4,7 +4,7 @@ import com.kh.home.board.market.model.Product;
 
 public class MarketController {
 		
-	
+	ProductController pc = new ProductController();
 	
 	// 리뷰 많은 순서로 보기
 	public void arrayReview() {
