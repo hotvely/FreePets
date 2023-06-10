@@ -3,7 +3,7 @@ package com.kh.home.board.petVideo.model;
 import java.util.Date;
 
 public class PetVideo {
-
+// 유튜브 연동,,,
 	private String title;
 	private Date uploadAt;
 	private int views;
