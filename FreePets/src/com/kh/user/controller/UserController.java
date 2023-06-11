@@ -18,6 +18,7 @@ public class UserController
 		this.isLogin = bl;
 		users.get(id).setLogin(isLogin);
 	}
+	
 	public boolean GetLogin()
 	{
 		return this.isLogin;
