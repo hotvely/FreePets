@@ -39,7 +39,7 @@ public class CommonController {
 		}
 	}
 	// 게시글 제목 클릭해 게시글 읽는 기능입니다. (권한 전체 || 로그인)
-	
+	    
 	
 	public void deleteBoard(String title) {
 		for(Common c:boards) {

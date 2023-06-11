@@ -1,6 +1,5 @@
 package com.kh.home.board.secondhandMarket.model;
 
-import java.time.LocalDate;
 import java.util.Objects;
 
 public class SecondhandMarket {
@@ -9,18 +8,13 @@ public class SecondhandMarket {
 	private String imageurl;	// 상품 썸네일
 	private String productName;	// 상품 이름
 	private int productPrice;	// 상품 가격
-	
-	/*
-	 * re : LocalDate sendTime; 이라는 자바에서 지원하는 time api가 있어요 한번 이용해 보시면 어떨까요?
-	 * */
+	private int productAmount;	// 상품 수량
 	private String date; //게시일 
-	
-	
-	
 	private String seller; // 판매자
 	private int likeCount; //좋아요 개수
 	private int chatCount;	//연락 온 채팅 개수
-	private String searchProduct; // 상품 검색하기	//기능..컨트롤러...
+	private String reserveStatus; //상품 예약 상태
+	
 	
 	public SecondhandMarket() {}
 
@@ -35,7 +29,7 @@ public class SecondhandMarket {
 		this.seller = seller;
 		this.likeCount = likeCount;
 		this.chatCount = chatCount;
-		this.searchProduct = searchProduct;
+//		this.searchProduct = searchProduct;
 	}
 
 	public String getId() {
@@ -102,24 +96,18 @@ public class SecondhandMarket {
 		this.chatCount = chatCount;
 	}
 
-	public String getSearchProduct() {
-		return searchProduct;
-	}
-
-	public void setSearchProduct(String searchProduct) {
-		this.searchProduct = searchProduct;
-	}
-
 	@Override
 	public String toString() {
 		return "SecondhandMarket [id=" + id + ", imageurl=" + imageurl + ", productName=" + productName
-				+ ", productPrice=" + productPrice + ", date=" + date + ", seller=" + seller + ", likeCount="
-				+ likeCount + ", chatCount=" + chatCount + ", searchProduct=" + searchProduct + "]";
+				+ ", productPrice=" + productPrice + ", productAmount=" + productAmount + ", date=" + date + ", seller="
+				+ seller + ", likeCount=" + likeCount + ", chatCount=" + chatCount + ", reserveStatus=" + reserveStatus
+				+ "]";
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(chatCount, date, id, imageurl, likeCount, productName, productPrice, searchProduct, seller);
+		return Objects.hash(chatCount, date, id, imageurl, likeCount, productAmount, productName, productPrice,
+				reserveStatus, seller);
 	}
 
 	@Override
@@ -133,11 +121,24 @@ public class SecondhandMarket {
 		SecondhandMarket other = (SecondhandMarket) obj;
 		return chatCount == other.chatCount && Objects.equals(date, other.date) && Objects.equals(id, other.id)
 				&& Objects.equals(imageurl, other.imageurl) && likeCount == other.likeCount
-				&& Objects.equals(productName, other.productName) && productPrice == other.productPrice
-				&& Objects.equals(searchProduct, other.searchProduct) && Objects.equals(seller, other.seller);
+				&& productAmount == other.productAmount && Objects.equals(productName, other.productName)
+				&& productPrice == other.productPrice && Objects.equals(reserveStatus, other.reserveStatus)
+				&& Objects.equals(seller, other.seller);
 	}
 	
-	//해쉬코드&이퀄스...필요....?
+	
+
+//	public String getSearchProduct() {
+//		return searchProduct;
+//	}
+//
+//	public void setSearchProduct(String searchProduct) {
+//		this.searchProduct = searchProduct;
+//	}
+
+
+
+
 	
 	
 	
