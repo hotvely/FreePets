@@ -8,10 +8,13 @@ public class UserController
 {
 //	User user = new User();
 	HashMap<String, User> users = new HashMap<>();		//나중에 서버랑 연동할때 데이터 긁어 오는 코드 필요할듯?
-	
 	LetterController letterCtrl = new LetterController();
 
+	public User user = null;
 	private boolean isLogin = false;
+	
+	
+	
 	// 이거 제대로 저장소 저장된거 맞아???? 아 오ㅠ
 	private void SetLogin(String id, boolean bl)
 	{
@@ -33,7 +36,8 @@ public class UserController
 		if(users.containsKey(id) && users.get(id).getPassword().equals(pass))
 		{	//아이디 있으면서 패스워드 동일할때;	
 			SetLogin(id, true);
-			return users.get(id);			
+			user = users.get(id);
+			return user;			
 		}
 		
 		return null;
@@ -201,7 +205,10 @@ public class UserController
 			return false;
 	}
 	
-		
+	public User searchUser(String id)	
+	{
+		return users.get(id);
+	}
 	
 	// 장바구니
 	public void printBasket()

@@ -22,6 +22,8 @@ public class SecondhandMarketController {
 		for(SecondhandMarket secondhandMarket: secondhmList) {
 			if(secondhandMarket.getProductName().contains(name)) {
 				// 중고마켓 반복문 돌려서 제품명 중 검색한 name을 포함하면....->상품 검색결과 반환...?
+				
+				// 상품 고유 식별 번호를 통해서 검색하는건 어떨까요?
 			}
 		}
 		return null;

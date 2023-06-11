@@ -14,6 +14,11 @@ public class ProductController {
 	
 	// 펫 용품 판매 사이트 서버에서 상품을 연동해 객체에 저장
 	// 하는 법은 몰라서 일단 비워 두었어요...
+	public void getProduct() 
+	{
+		// TODO 타 사이트 판매 제품 정보 같은것 연동 하기 ~	
+	}
+	
 	
 	// 저장된 상품을 펫 용품 리스트에 추가
 	public void addProduct(Product product) {

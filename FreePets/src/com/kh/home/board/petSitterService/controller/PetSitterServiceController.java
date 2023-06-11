@@ -1,25 +1,31 @@
 package com.kh.home.board.petSitterService.controller;
 import java.util.HashMap;
 
+import com.kh.user.controller.UserController;
 import com.kh.user.model.User;
 
 
 public class PetSitterServiceController {
 
-	
-	private HashMap<String, User > petsitter = new HashMap<>();
-    
+	// 이렇게 할 필요가 없을 것 같아요 아마..
+	// 내가 가지고 있는 데이터에 펫시터는 한사람이면 충분하지 않을까요?
+//	private HashMap<String, User > petsitter = new HashMap<>();
+	private UserController uc = new UserController();
+
+	User petsitter = null;
 	
 	//펫시터 등록
-	public boolean setPetSitter() {
-		
+	public boolean setPetSitter(String id) {
+		// 유저 관련 정보라서 일단 유저컨트롤러 쪽에서 임시로 해결.
+		petsitter = uc.searchUser(id);
+		uc.user.setSitter(petsitter);
 		// 유저 정보 받아와서 등록..?
 		return false;
 	}
 	
 	//펫시터 업데이트
 		public boolean updatePetSitter() {
-			
+			// 위에 setPetSitter함수 불러다가 그냥 덮어 써도 될것 같습니다아;
 			//유저가 존재한다면 해당 유저 정보 불러와서 변경 
 			return false;
 		}

@@ -10,7 +10,9 @@ public class User {
 	private int totalCash;
 	private ArrayList<CashInfo> cashInfo;
 	private boolean isLogin = false;
-	
+	private User sitter = null;
+
+
 	public User()
 	{
 		// 기본 생성자
@@ -132,11 +134,22 @@ public class User {
 	public int gettotalCash() {
 		return totalCash;
 	}
+	
+	public User getSitter() {
+		return sitter;
+	}
 
+	public void setSitter(User sitter) {
+		this.sitter = sitter;
+	}
 //	public void settotalCash(int totalCash) {
 //		this.totalCash = totalCash;
 //	}
 	
+	public User getUser()
+	{
+		return this;
+	}
 	
 
 	
