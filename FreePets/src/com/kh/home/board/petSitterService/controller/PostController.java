@@ -30,8 +30,8 @@ public class PostController extends User {
 		public boolean modifyPost() {
 			int index = 0;
 			if(writePost() != true) //작성한 글이 없으면
-			
 				return false;
+			
 			
 //			if(// 로그인이 안되었으면 )
 //				return false;

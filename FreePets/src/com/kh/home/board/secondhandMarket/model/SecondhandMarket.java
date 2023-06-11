@@ -1,5 +1,6 @@
 package com.kh.home.board.secondhandMarket.model;
 
+import java.time.LocalDate;
 import java.util.Objects;
 
 public class SecondhandMarket {
@@ -8,7 +9,14 @@ public class SecondhandMarket {
 	private String imageurl;	// 상품 썸네일
 	private String productName;	// 상품 이름
 	private int productPrice;	// 상품 가격
+	
+	/*
+	 * re : LocalDate sendTime; 이라는 자바에서 지원하는 time api가 있어요 한번 이용해 보시면 어떨까요?
+	 * */
 	private String date; //게시일 
+	
+	
+	
 	private String seller; // 판매자
 	private int likeCount; //좋아요 개수
 	private int chatCount;	//연락 온 채팅 개수

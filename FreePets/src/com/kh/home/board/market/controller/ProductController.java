@@ -25,6 +25,9 @@ public class ProductController {
 		return productList.get(index);
 	}
 	
+	
+	// 리뷰도 객체화 해서 빼는게 좋아 보입니당? // reviewController쪽으로.
+	
 	// 리뷰 작성 --> 로그인되어 있어야 함
 	public boolean addReview(int index, Review review) {
 		
