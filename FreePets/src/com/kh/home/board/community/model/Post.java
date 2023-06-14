@@ -2,6 +2,8 @@ package com.kh.home.board.community.model;
 
 import java.util.Date;
 
+import com.kh.user.model.User;
+
 public class Post {
     private int postId;
     private String title;

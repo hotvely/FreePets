@@ -49,7 +49,9 @@ public class PetSitterServiceController {
 		
 	//펫시터 삭제하기
 		public boolean deletePetSitter() {
+			//펫시터 삭제하기 버튼 누르면 작동
 			
+			petsitter = null;
 			// 나중에 채우기 
 			return true;
 		}
