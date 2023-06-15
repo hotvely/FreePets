@@ -1,5 +1,12 @@
 package com.kh.home.board.market.model;
 
-public class Market {
+import com.kh.user.model.User;
 
+public class Market {
+	
+	private User user; 
+	private Product product;
+	private Review review;
+	
+	
 }
