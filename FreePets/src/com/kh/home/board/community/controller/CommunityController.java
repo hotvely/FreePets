@@ -16,12 +16,16 @@ import com.kh.home.board.community.model.Community;
 
 	    public Community[] getHotCommunity() {
 	        Community[] hotCommunity = (Community[]) communities.toArray();
-	         communities.stream().(hotCommunity -> hotCommunity (0, 5);
+	        for (int i = 0; i < hotCommunity.length; i++) {
+	            for (int j = i + 1; j < hotCommunity.length; j++) {
+	                if (hotCommunity[i].like < hotCommunity[j].like) {
+	                    Community temp = hotCommunity[i];
+	                    hotCommunity[i] = hotCommunity[j];
+	                    hotCommunity[j] = temp;
 	                }
-	}
-	}
-
-	        return stream().hotCommunity(0, 5);
+	            }
+	        }
+	        return Arrays.copyOfRange(hotCommunity, 0, 5);
 	    }
 
 	    public void like(String id) {
