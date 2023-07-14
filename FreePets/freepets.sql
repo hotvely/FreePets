@@ -8,7 +8,7 @@ DROP SEQUENCE SEQ_FREEMARKET;
 DROP SEQUENCE SEQ_FREEMARKET_REVIEW;
 
 
-------------------------------------------- 승환 유저 테이블 생성코드
+------------------------------------------- 승환 유저 테이블 생성코드 
 DROP TABLE USER;
 
 CREATE TABLE TB_USER
