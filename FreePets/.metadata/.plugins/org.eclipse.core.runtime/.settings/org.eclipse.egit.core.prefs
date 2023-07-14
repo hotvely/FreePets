@@ -1,5 +1,5 @@
-GitRepositoriesView.GitDirectories=C\:\\FreePets\\.git;
-GitRepositoriesView.GitDirectories.relative=C\:\\FreePets\\.git;
+GitRepositoriesView.GitDirectories=/Users/junu/Desktop/FreePets/.git\:
+GitRepositoriesView.GitDirectories.relative=/Users/junu/Desktop/FreePets/.git\:
 RepositorySearchDialogDeepSearch=false
-RepositorySearchDialogSearchPath=C\:\\FreePets
+RepositorySearchDialogSearchPath=/Users/junu/Desktop/FreePets
 eclipse.preferences.version=1
