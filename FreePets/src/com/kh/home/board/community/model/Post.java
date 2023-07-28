@@ -12,7 +12,6 @@ public class Post {
     private User user;
     private int view;
     private int like;
-    
 	public int getPostId() {
 		return postId;
 	}
@@ -37,12 +36,23 @@ public class Post {
 	public void setCreatedDate(Date createdDate) {
 		this.createdDate = createdDate;
 	}
-	public String getAuthor() {
-		return author;
+	public User getUser() {
+		return user;
 	}
-	public void setAuthor(String author) {
-		this.author = author;
+	public void setUser(User user) {
+		this.user = user;
 	}
-    
+	public int getView() {
+		return view;
+	}
+	public void setView(int view) {
+		this.view = view;
+	}
+	public int getLike() {
+		return like;
+	}
+	public void setLike(int like) {
+		this.like = like;
+	}
     
 }
