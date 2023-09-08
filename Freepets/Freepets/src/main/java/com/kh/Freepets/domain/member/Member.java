@@ -17,11 +17,15 @@ import lombok.NoArgsConstructor;
 public class Member
 {
     @Id
-    @Column(name = "id")
     private String id;
+    @Column
     private String password;
+    @Column
     private String name;
+    @Column
     private String address;
+    @Column
     private String auth;
+    @Column
     private int enabled;
 }

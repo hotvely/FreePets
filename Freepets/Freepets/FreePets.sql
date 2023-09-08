@@ -1,0 +1,29 @@
+CREATE TABLE MEMBER(
+    id VARCHAR2(20) primary key,
+    password VARCHAR2(20),
+    name VARCHAR2(20),
+    address VARCHAR2(100),
+    auth VARCHAR2(50),
+    enabled number
+);
+
+CREATE TABLE BOARD(
+    id number primary key,
+    title VARCHAR2(50),
+    content VARCHAR2(100)    
+);
+
+DROP TABLE POST;
+CREATE TABLE POST(
+    POST_ID NUMBER primary key,
+	TITLE VARCHAR2(100) not null,
+	CONTENT VARCHAR2(300) not null,
+	regDate DATE DEFAULT SYSDATE,
+    VIEWS NUMBER,
+    LIKES NUMBER,
+    BOARD_ID NUMBER,
+    MEMBER_ID VARCHAR2(20),
+    CONSTRAINT BOARD_ID FOREIGN KEY(BOARD_ID) REFERENCES BOARD(id),
+    CONSTRAINT MEMBER_ID FOREIGN KEY(MEMBER_ID) REFERENCES MEMBER(id)
+);
+

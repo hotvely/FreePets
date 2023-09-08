@@ -1,8 +1,6 @@
 package com.kh.Freepets.domain.board;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -21,8 +19,9 @@ public class Board
     @Id
     @Column(name = "id")
     private int id;
+    @Column
     private String title;
+    @Column
     private String content;
 
-    private List<Post> posts = new ArrayList<>();
 }
