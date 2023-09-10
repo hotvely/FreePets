@@ -37,6 +37,9 @@ public class HospitalReview {
     @Column(name = "hospital_review_like")
     private int hospitalReviewLike;
 
+    @Column(name = "hospital_review_comment_count")
+    private int hospitalReviewCommentCount;
+
     @Column(name = "hospital_review_report_yn")
     private char hospitalReviewReportYn;
 

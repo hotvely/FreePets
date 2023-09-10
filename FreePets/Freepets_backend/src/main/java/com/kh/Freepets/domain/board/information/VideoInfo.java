@@ -38,6 +38,9 @@ public class VideoInfo {
     @Column(name = "video_info_like")
     private int videoInfoLike;
 
+    @Column(name = "video_info_comment_count")
+    private int videoInfoCommentCount;
+
     @Column(name = "video_info_report_yn")
     private char videoInfoReportYn;
 

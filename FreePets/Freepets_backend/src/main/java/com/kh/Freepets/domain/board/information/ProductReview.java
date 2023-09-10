@@ -23,9 +23,6 @@ public class ProductReview {
     @Column(name = "product_review_date")
     private Date productReviewDate;
 
-    @Column(name = "product_review_thum")
-    private String productReviewThum;
-
     @Column(name = "product_review_title")
     private String productReviewTitle;
 
@@ -39,7 +36,10 @@ public class ProductReview {
     private String productReviewImg;
 
     @Column(name = "product_review_like")
-    private String productReviewLike;
+    private int productReviewLike;
+
+    @Column(name = "product_review_comment_count")
+    private int productReviewCommentCount;
 
     @Column(name = "product_review_report_yn")
     private char productReviewReportYn;
