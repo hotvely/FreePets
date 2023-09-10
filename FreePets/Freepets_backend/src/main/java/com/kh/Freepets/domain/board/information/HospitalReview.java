@@ -13,7 +13,6 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 public class HospitalReview {
-
     @Id
     @Column(name = "hospital_review_code")
     @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "hospitalReviewSequence")

@@ -1,6 +1,5 @@
 package com.kh.Freepets.domain.board.information;
 
-
 import com.kh.Freepets.domain.member.Member;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -48,5 +47,4 @@ public class ProductReview {
     @ManyToOne
     @JoinColumn(name = "id")
     private Member member;
-
 }
