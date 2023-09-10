@@ -2,7 +2,6 @@ package com.kh.Freepets.service.board.information;
 
 import com.kh.Freepets.domain.board.information.HospitalReview;
 import com.kh.Freepets.domain.member.Member;
-import com.kh.Freepets.repo.board.information.HRCommentDAO;
 import com.kh.Freepets.repo.board.information.HospitalReviewDAO;
 import com.kh.Freepets.repo.member.MemberDAO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,8 +24,9 @@ public class HospitalReviewService {
 
     // 게시글 한 개 보기
     public HospitalReview show(int hospitalReviewCode) {
+
         // 게시글 들어갈 때마다 조회수 올라가기
-        hospitalReviewDAO.updateViews(hospitalReviewCode);
+        int result = hospitalReviewDAO.updateViews(hospitalReviewCode);
 
         HospitalReview hospitalReview = hospitalReviewDAO.findById(hospitalReviewCode).orElse(null);
         Member member = memberDAO.findById(hospitalReview.getMember().getId()).orElse(null);
@@ -57,7 +57,8 @@ public class HospitalReviewService {
 
     // 게시글 좋아요 하기
     public HospitalReview updateLike(int hospitalReviewCode) {
-        return hospitalReviewDAO.updateLike(hospitalReviewCode);
+        hospitalReviewDAO.updateLike(hospitalReviewCode);
+        return hospitalReviewDAO.findById(hospitalReviewCode).orElse(null);
     }
 
     // 좋아요 수 정렬 게시글 보기

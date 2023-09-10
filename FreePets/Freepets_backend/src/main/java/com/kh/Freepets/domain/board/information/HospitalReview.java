@@ -5,6 +5,8 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
 
 import java.util.Date;
 
@@ -12,12 +14,20 @@ import java.util.Date;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@DynamicInsert
+@DynamicUpdate
 public class HospitalReview {
     @Id
     @Column(name = "hospital_review_code")
     @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "hospitalReviewSequence")
     @SequenceGenerator(name = "hospitalReviewSequence", sequenceName = "SEQ_HOSPITAL_REVIEW", allocationSize = 1)
     private int hospitalReviewCode;
+
+    @Column(name = "hospital_name")
+    private String hospitalName;
+
+    @Column(name = "hospital_address")
+    private String hospitalAddress;
 
     @Column(name = "hospital_review_views")
     private int hospitalReviewViews;
