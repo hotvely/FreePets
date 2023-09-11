@@ -16,25 +16,30 @@ import java.util.Date;
 @DynamicInsert
 public class Lost {
     @Id
-    @Column(name="lost_code")
+    @Column(name="LOST_CODE")
+    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "lostSequence")
+    @SequenceGenerator(name="lostSequence", sequenceName = "SEQ_LOST", allocationSize=1)
     private int lostCode;
 
-    @Column
-    private String nickname;
-    @Column(name="lost_title")
+
+    @Column(name="LOST_TITLE")
     private String lostTitle;
-    @Column(name="lost_date")
+    @Column(name="LOST_ADDFILE_URL")
+    private String lostAddFileUrl;
+    @Column(name="LOST_URL")
+    private String lostUrl;
+    @Column(name="LOST_DATE")
     private Date lostDate;
-    @Column(name="lost_views")
+    @Column(name="LOST_VIEWS")
     private int lostViews;
-    @Column(name="lost_desc")
+    @Column(name="LOST_DESC")
     private String lostDesc;
-    @Column(name="lost_report_yn")
+    @Column(name="LOST_REPORT_YN")
     private char lostReportYN;
-    @Column(name="lost_like")
+    @Column(name="LOST_LIKE")
     private int lostLike;
 
     @ManyToOne
-    @JoinColumn(name="member_id")
+    @JoinColumn(name="id")
     private Member member;
 }

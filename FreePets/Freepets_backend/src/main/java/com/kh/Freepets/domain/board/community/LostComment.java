@@ -14,25 +14,27 @@ import java.util.Date;
 @AllArgsConstructor
 public class LostComment {
     @Id
-    @Column(name="l_comment_code")
+    @Column(name="L_COMMENT_CODE")
+    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "lostSequence")
+    @SequenceGenerator(name="lostSequence", sequenceName = "SEQ_LOST", allocationSize=1)
     private int l_commentCode;
 
-    @Column(name="l_comment_desc")
+    @Column(name="L_COMMENT_DESC")
     private String l_commentDesc;
-    @Column
-    private String nickname;
-    @Column(name="l_comment_date")
+    @Column(name="L_COMMENT_DATE")
     private Date l_commentDate;
-    @Column(name="l_comment_code_super")
+    @Column(name="L_COMMENT_CODE_SUPER")
     private int l_commentCodeSuper;
-    @Column(name="l_comment_report_yn")
+    @Column(name="L_COMMENT_IMG")
+    private String l_commentImg;
+    @Column(name="L_COMMENT_REPORT_YN")
     private char l_commentReportYN;
 
     @ManyToOne
-    @JoinColumn(name="lost_code")
+    @JoinColumn(name="LOST_CODE")
     private Lost lost;
     @ManyToOne
-    @JoinColumn(name="member_id")
+    @JoinColumn(name="ID")
     private Member member;
 
 }
