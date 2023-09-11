@@ -13,7 +13,7 @@ public interface VideoInfoDAO extends JpaRepository<VideoInfo, Integer> {
 
     @Transactional
     @Modifying
-    @Query(value = "UPDATE VIDEO_INFO SET VIDEO_INFO_LIKE = VIDEO_INFO_LIKE + 1 WHERE VIDEO_INFO_CODE = :videoInfoCode", nativeQuery = true)
+    @Query(value = "UPDATE VIDEO_INFO SET VIDEO_INFO_LIKE = (VIDEO_INFO_LIKE + 1) WHERE VIDEO_INFO_CODE = :videoInfoCode", nativeQuery = true)
     int updateLike(int videoInfoCode);
 
     @Transactional
@@ -26,7 +26,7 @@ public interface VideoInfoDAO extends JpaRepository<VideoInfo, Integer> {
 
     @Transactional
     @Modifying
-    @Query(value = "UPDATE VIDEO_INFO SET VIDEO_INFO_COMMENT_COUNT = VIDEO_INFO_COMMENT_COUNT + 1 WHERE VIDEO_INFO_CODE = :videoInfoCode", nativeQuery = true)
+    @Query(value = "UPDATE VIDEO_INFO SET VIDEO_INFO_COMMENT_COUNT = (VIDEO_INFO_COMMENT_COUNT + 1) WHERE VIDEO_INFO_CODE = :videoInfoCode", nativeQuery = true)
     int updateCommentCount(int videoInfoCode);
 
     @Query(value = "SELECT * FROM VIDEO_INFO ORDER BY VIDEO_INFO_COMMENT_COUNT DESC", nativeQuery = true)

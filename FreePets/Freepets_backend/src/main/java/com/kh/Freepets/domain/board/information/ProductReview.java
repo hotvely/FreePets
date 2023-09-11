@@ -17,7 +17,7 @@ public class ProductReview {
     @Id
     @Column(name = "product_review_code")
     @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "productReivewSequence")
-    @SequenceGenerator(name = "productReivewSequence", sequenceName = "SEQ_PRODUCT_REIVEW", allocationSize = 1)
+    @SequenceGenerator(name = "productReivewSequence", sequenceName = "SEQ_PRODUCT_REVIEW", allocationSize = 1)
     private int productReviewCode;
 
     @Column(name = "product_review_date")
@@ -26,8 +26,8 @@ public class ProductReview {
     @Column(name = "saleshop_name")
     private String saleshopName;
 
-    @Column(name = "saleshop_address")
-    private String saleshopAddress;
+    @Column(name = "saleshop_url")
+    private String saleshopUrl;
 
     @Column(name = "product_review_title")
     private String productReviewTitle;
