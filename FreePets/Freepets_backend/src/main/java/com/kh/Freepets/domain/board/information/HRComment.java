@@ -5,13 +5,16 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.DynamicInsert;
 
 import java.util.Date;
 
 @Entity
+@Table(name="HR_COMMENT")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@DynamicInsert
 public class HRComment {
 
     @Id

@@ -26,7 +26,7 @@ public class HospitalReviewService {
     public HospitalReview show(int hospitalReviewCode) {
 
         // 게시글 들어갈 때마다 조회수 올라가기
-        int result = hospitalReviewDAO.updateViews(hospitalReviewCode);
+        hospitalReviewDAO.updateViews(hospitalReviewCode);
 
         HospitalReview hospitalReview = hospitalReviewDAO.findById(hospitalReviewCode).orElse(null);
         Member member = memberDAO.findById(hospitalReview.getMember().getId()).orElse(null);

@@ -41,8 +41,11 @@ public class HospitalReview {
     @Column(name = "hospital_review_desc")
     private String hospitalReviewDesc;
 
-    @Column(name = "hospital_review_img")
-    private String hospitalReviewImg;
+    @Column(name = "hospital_review_file_url")
+    private String hospitalReviewFileUrl;
+
+    @Column(name = "hospital_review_url")
+    private String hospitalReviewUrl;
 
     @Column(name = "hospital_review_like")
     private int hospitalReviewLike;

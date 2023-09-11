@@ -23,6 +23,12 @@ public class ProductReview {
     @Column(name = "product_review_date")
     private Date productReviewDate;
 
+    @Column(name = "saleshop_name")
+    private String saleshopName;
+
+    @Column(name = "saleshop_address")
+    private String saleshopAddress;
+
     @Column(name = "product_review_title")
     private String productReviewTitle;
 
@@ -32,8 +38,11 @@ public class ProductReview {
     @Column(name = "product_review_desc")
     private String productReivewDesc;
 
-    @Column(name = "product_review_img")
-    private String productReviewImg;
+    @Column(name = "product_review_file_url")
+    private String productReviewFileUrl;
+
+    @Column(name = "product_review_url")
+    private String productReviewUrl;
 
     @Column(name = "product_review_like")
     private int productReviewLike;

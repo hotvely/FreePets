@@ -29,6 +29,9 @@ public class VideoInfo {
     @Column(name = "video_info_date")
     private Date videoInfoDate;
 
+    @Column(name = "video_info_file_url")
+    private String videoInfoFileUrl;
+
     @Column(name = "video_info_url")
     private String videoInfoUrl;
 
