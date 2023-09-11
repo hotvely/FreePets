@@ -25,8 +25,10 @@ public class LostService {
 
     public Lost show(int lostCode){
         Lost lost =  dao.findById(lostCode).orElse(null);
+        lost.setLostViews(lost.getLostViews()+1);  // 조회수 증가 메소드
         return lost;
     }
+
 
     public Lost create(Lost lost){
           Member member =   memberdao.findById(lost.getMember().getId()).orElse(null);
@@ -48,10 +50,23 @@ public class LostService {
         return target;
     }
 
-    public List<Lost> showMember(String id){
+    public List<Lost> showMember(String id){ //특정 유저의 분실 게시물 조회
        Member member =  memberdao.findById(id).orElse(null);
        List<Lost> target = dao.findByMemberId(member.getId());
        return target;
+    }
+
+    // 조회수별 게시물 조회
+
+    // 댓글수 별 게시물 조회
+
+    // 좋아요 수 별 게시물 조회
+
+    // 좋아요수 증가 메소드
+    public int lostLikeUp(int lostCode){
+        Lost target = dao.findById(lostCode).orElse(null);
+        target.setLostLike(target.getLostLike()+1);
+        return target.getLostLike();
     }
 
 }
