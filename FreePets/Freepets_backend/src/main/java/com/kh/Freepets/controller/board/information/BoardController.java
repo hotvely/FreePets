@@ -26,7 +26,8 @@ public class BoardController {
 
 
     // hospitalReview
-
+    
+    // 게시글 전체 보기
     @GetMapping("/hr")
     public ResponseEntity<List<HospitalReview>> hrShowAll() {
         try {
@@ -35,7 +36,8 @@ public class BoardController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
     }
-
+    
+    // 게시글 한 개 버기
     @GetMapping("/hr/{hospitalReviewCode}")
     public ResponseEntity<HospitalReview> hrShow(@PathVariable int hospitalReviewCode) {
         try {
@@ -45,7 +47,7 @@ public class BoardController {
         }
     }
 
-
+    // 게시글 작성
     @PostMapping("/hr")
     public ResponseEntity<HospitalReview> hrCreate(@RequestBody HospitalReview hospitalReview) {
         try {
@@ -54,7 +56,8 @@ public class BoardController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
     }
-
+    
+    // 게시글 수정
     @PutMapping("/hr")
     public ResponseEntity<HospitalReview> hrUpdate(@RequestBody HospitalReview hospitalReview) {
         try {
@@ -63,7 +66,8 @@ public class BoardController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
     }
-
+    
+    // 게시글 삭제
     @DeleteMapping("/hr/{hospitalReviewCode}")
     public ResponseEntity<HospitalReview> hrDelete(@PathVariable int hospitalReviewCode) {
         try {
@@ -73,6 +77,7 @@ public class BoardController {
         }
     }
 
+    // 게시글 좋아요
     @GetMapping("/hr/like/{hospitalReviewCode}")
     public ResponseEntity<HospitalReview> hrUpdateLike(@PathVariable int hospitalReviewCode) {
         try {
@@ -82,6 +87,7 @@ public class BoardController {
         }
     }
 
+    // 게시글 좋아요 별로 보기
     @GetMapping("/hr/orderlike")
     public ResponseEntity<List<HospitalReview>> hrShowLike() {
         try {
@@ -91,6 +97,7 @@ public class BoardController {
         }
     }
 
+    // 게시글 댓글 수 별로 보기
     @GetMapping("/hr/ordercomment")
     public ResponseEntity<List<HospitalReview>> hrShowComment() {
         try {

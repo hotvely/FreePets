@@ -34,8 +34,12 @@ public class HRComment {
     @Column(name = "hr_comment_img")
     private String hrCommentImg;
 
+    @Column(name = "super_hr_comment_code")
+    private int superHrCommentCode;
+
     @Column(name = "hr_comment_report_yn")
     private char hrCommentReportYn;
+
 
     @ManyToOne
     @JoinColumn(name = "id")
@@ -45,11 +49,5 @@ public class HRComment {
     @JoinColumn(name = "hospital_review_code")
     private HospitalReview hospitalReview;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "super_hr_comment_code")
-    private HRComment superHrCommentCode;  // 부모 댓글 없으면 null
-
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "superHrCommentCode", orphanRemoval = true)
-    private List<HRComment> childrenComment = new ArrayList<>();
 
 }

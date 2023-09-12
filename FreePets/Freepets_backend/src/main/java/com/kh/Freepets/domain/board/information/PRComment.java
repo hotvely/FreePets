@@ -10,8 +10,10 @@ import java.util.Date;
 
 @Entity
 @Data
+@Table(name = "PR_COMMENT")
 @NoArgsConstructor
 @AllArgsConstructor
+
 public class PRComment {
 
     @Id
