@@ -35,7 +35,7 @@ public class LostController {
 
     @PutMapping("/lost")
     public ResponseEntity<Lost> update(@RequestBody Lost lost){
-         return ResponseEntity.status(HttpStatus.OK).body(service.create(lost));
+         return ResponseEntity.status(HttpStatus.OK).body(service.update(lost));
     }
 
     @DeleteMapping("/lost/{lostCode}")
@@ -43,6 +43,9 @@ public class LostController {
          return ResponseEntity.status(HttpStatus.OK).body(service.delete(lostCode));
     }
 
+    // 좋아요 추가
+
+    // 좋아요
 
 
 }

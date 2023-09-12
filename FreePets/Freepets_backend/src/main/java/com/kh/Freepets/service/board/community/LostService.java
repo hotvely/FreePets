@@ -25,7 +25,7 @@ public class LostService {
 
     public Lost show(int lostCode){
         Lost lost =  dao.findById(lostCode).orElse(null);
-        lost.setLostViews(lost.getLostViews()+1);  // 조회수 증가 메소드
+       // lost.setLostViews(lost.getLostViews()+1);  // 조회수 증가 메소드
         return lost;
     }
 
@@ -56,17 +56,5 @@ public class LostService {
        return target;
     }
 
-    // 조회수별 게시물 조회
-
-    // 댓글수 별 게시물 조회
-
-    // 좋아요 수 별 게시물 조회
-
-    // 좋아요수 증가 메소드
-    public int lostLikeUp(int lostCode){
-        Lost target = dao.findById(lostCode).orElse(null);
-        target.setLostLike(target.getLostLike()+1);
-        return target.getLostLike();
-    }
 
 }
