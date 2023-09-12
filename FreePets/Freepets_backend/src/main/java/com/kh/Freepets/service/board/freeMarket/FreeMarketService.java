@@ -1,6 +1,7 @@
 package com.kh.Freepets.service.board.freeMarket;
 
 import com.kh.Freepets.domain.board.freeMarket.FreeMarket;
+import com.kh.Freepets.domain.board.sitter.Sitter;
 import com.kh.Freepets.domain.member.Member;
 import com.kh.Freepets.repo.board.freeMarket.FreeMarketDAO;
 import com.kh.Freepets.repo.member.MemberDAO;

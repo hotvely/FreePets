@@ -1,12 +1,5 @@
 package com.kh.Freepets.domain.board.freeMarket;
 
-//FREEMARKET_REVIEW_CODE NUMBER PRIMARY KEY,
-//        FREEMARKET_REVIEW_DESC VARCHAR(300),
-//        FREEMARKET_REVIEW_RATINGS INT,
-//        MEMBER_ID VARCHAR2(100),
-//        FREEMARKET_CODE NUMBER
-//CREATE SEQUENCE SEQ_FREEMARKET_REVIEW;
-
 import com.kh.Freepets.domain.member.Member;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -26,7 +19,7 @@ public class FreeMarketReview {
     @Id
     @Column(name = "FREEMARKET_REVIEW_CODE")
     @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "freeMarketReviewSequence")
-    @SequenceGenerator(name = "freeMarketSequence", sequenceName = "SEQ_FREEMARKET_REVIEW" ,allocationSize = 1)
+    @SequenceGenerator(name = "freeMarketReviewSequence", sequenceName = "SEQ_FREEMARKET_REVIEW" ,allocationSize = 1)
     private int freeMarketReviewCode;
 
     @Column(name = "FREEMARKET_REVIEW_DESC")
