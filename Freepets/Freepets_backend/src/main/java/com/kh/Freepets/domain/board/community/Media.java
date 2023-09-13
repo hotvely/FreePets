@@ -17,30 +17,30 @@ import java.util.Date;
 public class Media {
 
     @Id
-    @Column(name="media_code")
-    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "mediaSeq")
-    @SequenceGenerator(name = "mediaSeq", sequenceName = "SEQ_MEDIA", allocationSize = 1)
+    @Column(name="MEDIA_CODE")
+    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "mediaSequence")
+    @SequenceGenerator(name = "mediaSequence", sequenceName = "SEQ_MEDIA", allocationSize = 1)
     private int mediaCode;
 
-    @Column(name="media_title")
+    @Column(name="MEDIA_TITLE")
     private String mediaTitle;
-    @Column(name="media_date")
+    @Column(name="MEDIA_DATE")
     private Date mediaDate;
-    @Column(name="media_views")
+    @Column(name="MEDIA_VIEWS")
     private int mediaViews;
-    @Column(name="meida_add_file_url")
+    @Column(name="MEDIA_ADD_FILE_URL")
     private String mediaAddFileUrl;
-    @Column(name="media_youtube_url")
+    @Column(name="MEDIA_YOUTUBE_URL")
     private String youtubeUrl;
-    @Column(name="media_desc")
+    @Column(name="MEDIA_DESC")
     private String mediaDesc;
-    @Column(name="media_photo")
+    @Column(name="MEDIA_PHOTO")
     private String mediaPhoto;
-    @Column(name="media_category")
+    @Column(name="MEDIA_CATEGORY")
     private String category;
 
     @ManyToOne
-    @JoinColumn(name="id")
+    @JoinColumn(name="ID")
     private Member member;
     //private Report report; 신고 뉘기야
 

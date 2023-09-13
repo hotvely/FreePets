@@ -12,13 +12,15 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class CommunityLike {
     @Id
-    @Column(name="c_like_code")
+    @Column(name="C_LIKE_CODE")
+    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "commonLikeSequence" )
+    @SequenceGenerator(name = "commonLikeSequence",sequenceName = "SEQ_COMMON_LIKE" ,allocationSize = 1)
     private int commonLike;
 
     @ManyToOne
-    @JoinColumn(name="common_code")
+    @JoinColumn(name="COMMON_CODE")
     private Community community;
     @ManyToOne
-    @JoinColumn(name="id")
+    @JoinColumn(name="ID")
     private Member member;
 }

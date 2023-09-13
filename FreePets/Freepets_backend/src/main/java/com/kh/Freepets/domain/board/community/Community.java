@@ -15,26 +15,26 @@ import java.util.Date;
 @DynamicInsert
 public class Community {
     @Id
-    @Column(name="common_code")
-    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "commonSeq")
-    @SequenceGenerator(name = "commonSeq", sequenceName = "SEQ_COMMON",allocationSize = 1)
+    @Column(name="COMMON_CODE")
+    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "commonSequence")
+    @SequenceGenerator(name = "commonSequence", sequenceName = "SEQ_COMMON",allocationSize = 1)
     private int commonCode;
-    @Column(name="common_date")
+    @Column(name="COMMON_DATE")
     private Date commonDate;
-    @Column(name="common_views")
+    @Column(name="COMMON_VIEWS")
     private int commonViews;
-    @Column(name="common_title")
+    @Column(name="COMMON_TITLE")
     private String commonTitle;
-    @Column(name="common_desc")
+    @Column(name="COMMON_DESC")
     private String commonDesc;
-    @Column(name="common_add_file_url")
+    @Column(name="COMMON_ADD_FILE_URL")
     private String commonAddFileUrl;
-    @Column(name="common_youtube_url")
+    @Column(name="COMMON_YOUTUBE_URL")
     private String youtubeUrl;
 
     @ManyToOne
-    @JoinColumn(name="id")
+    @JoinColumn(name="ID")
     private Member member;
-    //신고 만들어줘 예진아
+    //신고 만들어줘
 
 }

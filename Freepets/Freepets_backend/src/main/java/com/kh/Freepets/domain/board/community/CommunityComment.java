@@ -15,25 +15,25 @@ import java.util.Date;
 @DynamicInsert
 public class CommunityComment {
     @Id
-    @Column(name="c_comment_code")
-    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "commonCommentSeq")
-    @SequenceGenerator(name = "commonCommentSeq", sequenceName = "SEQ_COMMON_COMMENT",allocationSize = 1)
+    @Column(name="C_COMMENT_CODE")
+    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "commonCommentSequence")
+    @SequenceGenerator(name = "commonCommentSequence", sequenceName = "SEQ_COMMON_COMMENT",allocationSize = 1)
     private int commonCommentCode;
 
-    @Column(name="c_comment_desc")
+    @Column(name="C_COMMENT_DESC")
     private String commonCommentDesc;
-    @Column(name="c_comment_date")
+    @Column(name="C_COMMENT_DATE")
     private Date commonCommentDate;
-    @Column(name="c_comment_code_super")
+    @Column(name="C_COMMENT_CODE_SUPER")
     private int commonCommentCodeSuper;
-    @Column(name="c_comment_add_file_url")
+    @Column(name="C_COMMENT_ADD_FILE_URL")
     private String commonCommentAddFileUrl;
 
     @ManyToOne
-    @JoinColumn(name="common_code")
+    @JoinColumn(name="COMMON_CODE")
     private Community community;
     @ManyToOne
-    @JoinColumn(name="id")
+    @JoinColumn(name="ID")
     private Member member;
 
 }
