@@ -63,7 +63,8 @@ public class LostController {
     public ResponseEntity<LostLike> deleteLostLike(@PathVariable int lostLikeCode){
          return ResponseEntity.status(HttpStatus.OK).body(lostlike.delete(lostLikeCode));
     }
-
+    //좋아요 갯수 처리 (쿼리문 update 로 좋아요 카운트가 하나씩 추가  )
+    // 좋아요 갯수 취소
 
 
 

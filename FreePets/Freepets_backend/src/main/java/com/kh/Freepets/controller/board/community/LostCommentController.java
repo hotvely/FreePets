@@ -44,9 +44,11 @@ public class LostCommentController {
     private ResponseEntity<LostComment> deleteLostComment(int lCommentCode){
         return ResponseEntity.status(HttpStatus.OK).body(lostcomment.delete(lCommentCode));
     }
-
+     // 댓글 갯수 추가(쿼리문 update 로 하나 게시물을 쓸때마다 댓글 카운트가 하나씩 추가  +1)
+    // 댓글 갯수 삭제 (카운트 -1)
     // 댓글에 사진 첨부하기
     // 댓글에 사진 수정하기
     // 댓글에 사진 삭제하기
+
 
 }
