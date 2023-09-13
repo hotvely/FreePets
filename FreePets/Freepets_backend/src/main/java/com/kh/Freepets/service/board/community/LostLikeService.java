@@ -15,9 +15,11 @@ public class LostLikeService {
     @Autowired
     private LostLikeDAO dao;
 
+
     public List<LostLike> showAllLostLike() {
         return dao.findAll();
     }
+
 
     public LostLike showLostLike(int lostlikeCode){
 
@@ -25,9 +27,11 @@ public class LostLikeService {
         return lostlike;
     }
 
+
     public LostLike create(LostLike lostlike){
         return dao.save(lostlike);
     }
+
 
     public LostLike update(LostLike lostlike){
         LostLike target =  dao.findById(lostlike.getLostLikeCode()).orElse(null);
@@ -36,6 +40,7 @@ public class LostLikeService {
         }
         return null;
     }
+
 
     public LostLike delete(int lostlikeCode){
         LostLike target =  dao.findById(lostlikeCode).orElse(null);

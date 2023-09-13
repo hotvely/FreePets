@@ -17,18 +17,18 @@ public class LostComment {
     @Column(name="L_COMMENT_CODE")
     @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "lostSequence")
     @SequenceGenerator(name="lostSequence", sequenceName = "SEQ_LOST", allocationSize=1)
-    private int l_commentCode;
+    private int lCommentCode;
 
     @Column(name="L_COMMENT_DESC")
-    private String l_commentDesc;
+    private String lCommentDesc;
     @Column(name="L_COMMENT_DATE")
-    private Date l_commentDate;
+    private Date lCommentDate;
     @Column(name="L_COMMENT_CODE_SUPER")
-    private int l_commentCodeSuper;
+    private int lCommentCodeSuper;
     @Column(name="L_COMMENT_IMG")
-    private String l_commentImg;
+    private String lCcommentImg;
     @Column(name="L_COMMENT_REPORT_YN")
-    private char l_commentReportYN;
+    private char lCommentReportYN;
 
     @ManyToOne
     @JoinColumn(name="LOST_CODE")
