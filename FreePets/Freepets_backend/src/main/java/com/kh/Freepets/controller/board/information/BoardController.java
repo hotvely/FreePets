@@ -1,9 +1,8 @@
 package com.kh.Freepets.controller.board.information;
 
-import com.kh.Freepets.domain.board.information.HospitalReview;
-import com.kh.Freepets.domain.board.information.ProductReview;
-import com.kh.Freepets.domain.board.information.VideoInfo;
+import com.kh.Freepets.domain.board.information.*;
 import com.kh.Freepets.service.board.information.HospitalReviewService;
+import com.kh.Freepets.service.board.information.HrLikeService;
 import com.kh.Freepets.service.board.information.ProductReviewService;
 import com.kh.Freepets.service.board.information.VideoInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +18,8 @@ public class BoardController {
 
     @Autowired
     private HospitalReviewService hrService;
+    @Autowired
+    private HrLikeService hrLikeService;
     @Autowired
     private ProductReviewService prService;
     @Autowired
@@ -37,7 +38,7 @@ public class BoardController {
         }
     }
     
-    // 게시글 한 개 버기
+    // 게시글 한 개 보기
     @GetMapping("/hr/{hospitalReviewCode}")
     public ResponseEntity<HospitalReview> hrShow(@PathVariable int hospitalReviewCode) {
         try {
@@ -109,6 +110,7 @@ public class BoardController {
 
     // productReview
 
+    // 게시글 전체 보기
     @GetMapping("/pr")
     public ResponseEntity<List<ProductReview>> prShowAll() {
         try {
@@ -118,6 +120,7 @@ public class BoardController {
         }
     }
 
+    // 게시글 한 개 보기
     @GetMapping("/pr/{productReviewCode}")
     public ResponseEntity<ProductReview> prShow(@PathVariable int productReviewCode) {
         try {
@@ -127,7 +130,7 @@ public class BoardController {
         }
     }
 
-
+    // 게시글 작성
     @PostMapping("/pr")
     public ResponseEntity<ProductReview> prCreate(@RequestBody ProductReview productReview) {
         try {
@@ -136,7 +139,8 @@ public class BoardController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
     }
-
+    
+    // 게시글 수정
     @PutMapping("/pr")
     public ResponseEntity<ProductReview> prUpdate(@RequestBody ProductReview productReview) {
         try {
@@ -145,7 +149,8 @@ public class BoardController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
     }
-
+    
+    // 게시글 삭제
     @DeleteMapping("/pr/{productReviewCode}")
     public ResponseEntity<ProductReview> prDelete(@PathVariable int productReviewCode) {
         try {
@@ -154,16 +159,28 @@ public class BoardController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
     }
-
-    @GetMapping("/pr/like/{productReviewCode}")
-    public ResponseEntity<ProductReview> prUpdateLike(@PathVariable int productReviewCode) {
+    
+    // 게시글 좋아요 & 좋아요 개수 처리
+//    @PostMapping("/pr/like")
+//    public ResponseEntity<PrLike> prUpdateLike(@RequestBody PrLike prLike) {
+//        try {
+//            return ResponseEntity.status(HttpStatus.OK)
+//        } catch (Exception e) {
+//            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+//        }
+//    }
+    
+    // 게시글 좋아요 취소 개수 처리
+    @GetMapping("/pr/likeDelete/{productReviewCode}")
+    public ResponseEntity<ProductReview> prDeleteLike(@PathVariable int productReviewCode) {
         try {
-            return ResponseEntity.status(HttpStatus.OK).body(prService.updateLike(productReviewCode));
+            return ResponseEntity.status(HttpStatus.OK).body(prService.deleteLike(productReviewCode));
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
     }
-
+    
+    // 게시글 좋아요 정렬
     @GetMapping("/pr/orderlike")
     public ResponseEntity<List<ProductReview>> prShowLike() {
         try {
@@ -172,7 +189,8 @@ public class BoardController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
     }
-
+    
+    // 게시글 댓글 수 정렬
     @GetMapping("/pr/ordercomment")
     public ResponseEntity<List<ProductReview>> prShowComment() {
         try {
@@ -183,7 +201,8 @@ public class BoardController {
     }
 
     // videoInfo
-
+    
+    // 게시글 전체 보기
     @GetMapping("/vi")
     public ResponseEntity<List<VideoInfo>> viShowAll() {
         try {
@@ -192,7 +211,8 @@ public class BoardController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
     }
-
+    
+    // 게시글 한 개 보기
     @GetMapping("/vi/{videoInfoCode}")
     public ResponseEntity<VideoInfo> viShow(@PathVariable int videoInfoCode) {
         try {
@@ -202,7 +222,7 @@ public class BoardController {
         }
     }
 
-
+    // 게시글 작성
     @PostMapping("/vi")
     public ResponseEntity<VideoInfo> viCreate(@RequestBody VideoInfo videoInfo) {
         try {
@@ -211,7 +231,8 @@ public class BoardController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
     }
-
+    
+    // 게시글 수정
     @PutMapping("/vi")
     public ResponseEntity<VideoInfo> viUpdate(@RequestBody VideoInfo videoInfo) {
         try {
@@ -220,7 +241,8 @@ public class BoardController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
     }
-
+    
+    // 게시글 삭제
     @DeleteMapping("/vi/{videoInfoCode}")
     public ResponseEntity<VideoInfo> viDelete(@PathVariable int videoInfoCode) {
         try {
@@ -229,7 +251,8 @@ public class BoardController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
     }
-
+    
+    // 게시글 좋아요
     @GetMapping("/vi/like/{videoInfoCode}")
     public ResponseEntity<VideoInfo> viUpdateLike(@PathVariable int videoInfoCode) {
         try {
@@ -238,7 +261,8 @@ public class BoardController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
     }
-
+    
+    // 게시글 좋아요 정렬
     @GetMapping("/vi/orderlike")
     public ResponseEntity<List<VideoInfo>> viShowLike() {
         try {
@@ -247,7 +271,8 @@ public class BoardController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
     }
-
+    
+    // 게시글 댓글 수 정렬
     @GetMapping("/vi/ordercomment")
     public ResponseEntity<List<VideoInfo>> viShowComment() {
         try {

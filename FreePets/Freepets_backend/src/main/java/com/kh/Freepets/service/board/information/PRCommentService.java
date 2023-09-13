@@ -1,6 +1,5 @@
 package com.kh.Freepets.service.board.information;
 
-import com.kh.Freepets.domain.board.information.HRComment;
 import com.kh.Freepets.domain.board.information.PRComment;
 import com.kh.Freepets.domain.member.Member;
 import com.kh.Freepets.repo.board.information.PRCommentDAO;

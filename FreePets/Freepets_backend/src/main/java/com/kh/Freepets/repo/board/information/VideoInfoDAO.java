@@ -18,6 +18,11 @@ public interface VideoInfoDAO extends JpaRepository<VideoInfo, Integer> {
 
     @Transactional
     @Modifying
+    @Query(value = "UPDATE VIDEO_INFO SET VIDEO_INFO_LIKE = (VIDEO_INFO_LIKE - 1) WHERE VIDEO_INFO_CODE = :videoInfoCode", nativeQuery = true)
+    int deleteLike(int videoInfoCode);
+
+    @Transactional
+    @Modifying
     @Query(value = "UPDATE VIDEO_INFO SET VIDEO_INFO_VIEWS = (VIDEO_INFO_VIEWS + 1) WHERE VIDEO_INFO_CODE = :videoInfoCode", nativeQuery = true)
     int updateViews(int videoInfoCode);
 

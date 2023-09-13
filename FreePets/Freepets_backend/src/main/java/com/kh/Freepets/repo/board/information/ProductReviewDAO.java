@@ -18,6 +18,11 @@ public interface ProductReviewDAO extends JpaRepository<ProductReview, Integer> 
 
     @Transactional
     @Modifying
+    @Query(value = "UPDATE PRODUCT_REVIEW SET PRODUCT_REVIEW_LIKE = (PRODUCT_REVIEW_LIKE - 1) WHERE PRODUCT_REVIEW_CODE = :productReviewCode", nativeQuery = true)
+    int deleteLike(int productReviewCode);
+
+    @Transactional
+    @Modifying
     @Query(value = "UPDATE PRODUCT_REVIEW SET PRODUCT_REVIEW_VIEWS = (PRODUCT_REVIEW_VIEWS + 1) WHERE PRODUCT_REVIEW_CODE = :productReviewCode", nativeQuery = true)
     int updateViews(int productReviewCode);
 

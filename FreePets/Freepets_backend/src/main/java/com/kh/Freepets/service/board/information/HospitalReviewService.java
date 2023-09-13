@@ -61,6 +61,12 @@ public class HospitalReviewService {
         return hospitalReviewDAO.findById(hospitalReviewCode).orElse(null);
     }
 
+    // 게시글 좋아요 취소
+    public HospitalReview deleteLike(int hospitalReviewCode) {
+        hospitalReviewDAO.deleteLike(hospitalReviewCode);
+        return hospitalReviewDAO.findById(hospitalReviewCode).orElse(null);
+    }
+
     // 좋아요 수 정렬 게시글 보기
     public List<HospitalReview> showLike() {
         return hospitalReviewDAO.showLike();

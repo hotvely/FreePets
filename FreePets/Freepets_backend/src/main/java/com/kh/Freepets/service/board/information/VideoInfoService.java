@@ -1,5 +1,6 @@
 package com.kh.Freepets.service.board.information;
 
+import com.kh.Freepets.domain.board.information.HospitalReview;
 import com.kh.Freepets.domain.board.information.ProductReview;
 import com.kh.Freepets.domain.board.information.VideoInfo;
 import com.kh.Freepets.domain.member.Member;
@@ -60,6 +61,12 @@ public class VideoInfoService {
     // 게시글 좋아요 하기
     public VideoInfo updateLike(int videoInfoCode) {
         videoInfoDAO.updateLike(videoInfoCode);
+        return videoInfoDAO.findById(videoInfoCode).orElse(null);
+    }
+
+    // 게시글 좋아요 취소
+    public VideoInfo deleteLike(int videoInfoCode) {
+        videoInfoDAO.deleteLike(videoInfoCode);
         return videoInfoDAO.findById(videoInfoCode).orElse(null);
     }
 

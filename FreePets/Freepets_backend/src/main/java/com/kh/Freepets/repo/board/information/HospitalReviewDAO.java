@@ -18,6 +18,11 @@ public interface HospitalReviewDAO extends JpaRepository<HospitalReview, Integer
 
     @Transactional
     @Modifying
+    @Query(value = "UPDATE HOSPITAL_REVIEW SET HOSPITAL_REVIEW_LIKE = (HOSPITAL_REVIEW_LIKE - 1) WHERE HOSPITAL_REVIEW_CODE = :hospitalReviewCode", nativeQuery = true)
+    int deleteLike(int hospitalReviewCode);
+
+    @Transactional
+    @Modifying
     @Query(value = "UPDATE HOSPITAL_REVIEW SET HOSPITAL_REVIEW_VIEWS = (HOSPITAL_REVIEW_VIEWS + 1) WHERE HOSPITAL_REVIEW_CODE = :hospitalReviewCode", nativeQuery = true)
     int updateViews(int hospitalReviewCode);
 
