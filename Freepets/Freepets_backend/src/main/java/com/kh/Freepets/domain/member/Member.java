@@ -47,19 +47,19 @@ public class Member
     @Column
     private String email;
 
-    @Column
-    private Date create_account_date;
+    @Column(name = "create_account_date")
+    private Date createAccountDate;
 
-    @Column
-    private char delete_account_yn;
+    @Column(name = "delete_account_yn")
+    private char deleteAccountYN;
 
     @Column
     private String authority;
 
-    @Column
-    private String member_img;
+    @Column(name = "member_img")
+    private String memberImg;
 
-    @Column
-    private String member_info;
+    @Column(name = "member_info")
+    private String memberInfo;
 
 }
