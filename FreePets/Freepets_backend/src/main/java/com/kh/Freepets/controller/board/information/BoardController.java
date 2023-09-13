@@ -1,12 +1,11 @@
 package com.kh.Freepets.controller.board.information;
 
 import com.kh.Freepets.domain.board.information.*;
-import com.kh.Freepets.service.board.information.HospitalReviewService;
-import com.kh.Freepets.service.board.information.HrLikeService;
-import com.kh.Freepets.service.board.information.ProductReviewService;
-import com.kh.Freepets.service.board.information.VideoInfoService;
+import com.kh.Freepets.domain.member.Member;
+import com.kh.Freepets.service.board.information.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,7 +22,11 @@ public class BoardController {
     @Autowired
     private ProductReviewService prService;
     @Autowired
+    private PrLikeService prLikeService;
+    @Autowired
     private VideoInfoService viService;
+    @Autowired
+    private ViLikeService viLikeService;
 
 
     // hospitalReview
@@ -78,11 +81,24 @@ public class BoardController {
         }
     }
 
-    // 게시글 좋아요
-    @GetMapping("/hr/like/{hospitalReviewCode}")
-    public ResponseEntity<HospitalReview> hrUpdateLike(@PathVariable int hospitalReviewCode) {
+    // 게시글 좋아요 & 좋아요 개수 처리
+    @PostMapping("/hr/like")
+    public ResponseEntity<HrLike> prUpdateLike(@RequestBody HrLike hrLike) {
         try {
-            return ResponseEntity.status(HttpStatus.OK).body(hrService.updateLike(hospitalReviewCode));
+            prService.updateLike(hrLike.getHospitalReview().getHospitalReviewCode());
+            return ResponseEntity.status(HttpStatus.OK).body(hrLikeService.hrAddLike(hrLike));
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        }
+    }
+
+    // 게시글 좋아요 취소 & 좋아요 개수 처리
+    @DeleteMapping("/hr/like/{hrLikeCode}")
+    public ResponseEntity<HrLike> hrDeleteLike(@PathVariable int hrLikeCode) {
+        try {
+            HrLike hrLike = hrLikeService.show(hrLikeCode);
+            hrService.deleteLike(hrLike.getHospitalReview().getHospitalReviewCode());
+            return ResponseEntity.status(HttpStatus.OK).body(hrLikeService.hrDeleteLike(hrLikeCode));
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
@@ -161,20 +177,28 @@ public class BoardController {
     }
     
     // 게시글 좋아요 & 좋아요 개수 처리
-//    @PostMapping("/pr/like")
-//    public ResponseEntity<PrLike> prUpdateLike(@RequestBody PrLike prLike) {
-//        try {
-//            return ResponseEntity.status(HttpStatus.OK)
-//        } catch (Exception e) {
-//            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
-//        }
-//    }
-    
-    // 게시글 좋아요 취소 개수 처리
-    @GetMapping("/pr/likeDelete/{productReviewCode}")
-    public ResponseEntity<ProductReview> prDeleteLike(@PathVariable int productReviewCode) {
+    @PostMapping("/pr/like")
+    public ResponseEntity<PrLike> prUpdateLike(@RequestBody PrLike prLike) {
         try {
-            return ResponseEntity.status(HttpStatus.OK).body(prService.deleteLike(productReviewCode));
+            PrLike target = prLikeService.likeMember(prLike.getMember().getId(), prLike.getProductReview().getProductReviewCode());
+            if (target == null) {
+                prService.updateLike(prLike.getProductReview().getProductReviewCode());
+                return ResponseEntity.status(HttpStatus.OK).body(prLikeService.prAddLike(prLike));
+            } else {
+                return null;
+            }
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        }
+    }
+    
+    // 게시글 좋아요 취소 & 좋아요 개수 처리
+    @DeleteMapping("/pr/like/{prLikeCode}")
+    public ResponseEntity<PrLike> prDeleteLike(@PathVariable int prLikeCode) {
+        try {
+            PrLike prLike = prLikeService.show(prLikeCode);
+            prService.deleteLike(prLike.getProductReview().getProductReviewCode());
+            return ResponseEntity.status(HttpStatus.OK).body(prLikeService.prDeleteLike(prLikeCode));
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
