@@ -83,10 +83,13 @@ public class BoardController {
 
     // 게시글 좋아요 & 좋아요 개수 처리
     @PostMapping("/hr/like")
-    public ResponseEntity<HrLike> prUpdateLike(@RequestBody HrLike hrLike) {
+    public ResponseEntity<HrLike> hrUpdateLike(@RequestBody HrLike hrLike) {
         try {
-            prService.updateLike(hrLike.getHospitalReview().getHospitalReviewCode());
-            return ResponseEntity.status(HttpStatus.OK).body(hrLikeService.hrAddLike(hrLike));
+            HrLike target = hrLikeService.likeMember(hrLike.getMember().getId(), hrLike.getHospitalReview().getHospitalReviewCode());
+            if (target == null) {
+                hrService.updateLike(hrLike.getHospitalReview().getHospitalReviewCode());
+                return ResponseEntity.status(HttpStatus.OK).body(hrLikeService.hrAddLike(hrLike));
+            } else return null;
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
@@ -97,8 +100,11 @@ public class BoardController {
     public ResponseEntity<HrLike> hrDeleteLike(@PathVariable int hrLikeCode) {
         try {
             HrLike hrLike = hrLikeService.show(hrLikeCode);
-            hrService.deleteLike(hrLike.getHospitalReview().getHospitalReviewCode());
-            return ResponseEntity.status(HttpStatus.OK).body(hrLikeService.hrDeleteLike(hrLikeCode));
+            HrLike target = hrLikeService.likeMember(hrLike.getMember().getId(), hrLike.getHospitalReview().getHospitalReviewCode());
+            if(target != null) {
+                hrService.deleteLike(hrLike.getHospitalReview().getHospitalReviewCode());
+                return ResponseEntity.status(HttpStatus.OK).body(hrLikeService.hrDeleteLike(hrLikeCode));
+            } else return null;
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
@@ -184,9 +190,7 @@ public class BoardController {
             if (target == null) {
                 prService.updateLike(prLike.getProductReview().getProductReviewCode());
                 return ResponseEntity.status(HttpStatus.OK).body(prLikeService.prAddLike(prLike));
-            } else {
-                return null;
-            }
+            } else return null;
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
@@ -197,8 +201,11 @@ public class BoardController {
     public ResponseEntity<PrLike> prDeleteLike(@PathVariable int prLikeCode) {
         try {
             PrLike prLike = prLikeService.show(prLikeCode);
-            prService.deleteLike(prLike.getProductReview().getProductReviewCode());
-            return ResponseEntity.status(HttpStatus.OK).body(prLikeService.prDeleteLike(prLikeCode));
+            PrLike target = prLikeService.likeMember(prLike.getMember().getId(), prLike.getProductReview().getProductReviewCode());
+            if(target != null) {
+                prService.deleteLike(prLike.getProductReview().getProductReviewCode());
+                return ResponseEntity.status(HttpStatus.OK).body(prLikeService.prDeleteLike(prLikeCode));
+            } else return null;
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
@@ -275,12 +282,31 @@ public class BoardController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
     }
-    
-    // 게시글 좋아요
-    @GetMapping("/vi/like/{videoInfoCode}")
-    public ResponseEntity<VideoInfo> viUpdateLike(@PathVariable int videoInfoCode) {
+
+    // 게시글 좋아요 & 좋아요 개수 처리
+    @PostMapping("/vi/like")
+    public ResponseEntity<ViLike> viUpdateLike(@RequestBody ViLike viLike) {
         try {
-            return ResponseEntity.status(HttpStatus.OK).body(viService.updateLike(videoInfoCode));
+            ViLike target = viLikeService.likeMember(viLike.getMember().getId(), viLike.getVideoInfo().getVideoInfoCode());
+            if (target == null) {
+                viService.updateLike(viLike.getVideoInfo().getVideoInfoCode());
+                return ResponseEntity.status(HttpStatus.OK).body(viLikeService.viAddLike(viLike));
+            } else return null;
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        }
+    }
+
+    // 게시글 좋아요 취소 & 좋아요 개수 처리
+    @DeleteMapping("/vi/like/{viLikeCode}")
+    public ResponseEntity<ViLike> viDeleteLike(@PathVariable int viLikeCode) {
+        try {
+            ViLike viLike = viLikeService.show(viLikeCode);
+            ViLike target = viLikeService.likeMember(viLike.getMember().getId(), viLike.getVideoInfo().getVideoInfoCode());
+            if(target != null) {
+                viService.deleteLike(viLike.getVideoInfo().getVideoInfoCode());
+                return ResponseEntity.status(HttpStatus.OK).body(viLikeService.viDeleteLike(viLikeCode));
+            } else return null;
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
