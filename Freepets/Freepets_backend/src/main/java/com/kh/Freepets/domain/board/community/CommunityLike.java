@@ -15,7 +15,7 @@ public class CommunityLike {
     @Column(name="C_LIKE_CODE")
     @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "commonLikeSequence" )
     @SequenceGenerator(name = "commonLikeSequence",sequenceName = "SEQ_COMMON_LIKE" ,allocationSize = 1)
-    private int commonLike;
+    private int commonLikeCode;
 
     @ManyToOne
     @JoinColumn(name="COMMON_CODE")
