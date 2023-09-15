@@ -21,7 +21,7 @@ public class LostController {
      private LostService service;
 
      @Autowired
-     private LostLikeService lostlike;
+     private LostLikeService lostlikeservice;
 
      // 분실신고 게시글 전체보기
      @GetMapping("/lost")
@@ -53,19 +53,48 @@ public class LostController {
          return ResponseEntity.status(HttpStatus.OK).body(service.delete(lostCode));
     }
 
-    // 분실 신고 좋아요 추가 POST - http://localhost:8080/api/lost/like
+    // 분실 신고 좋아요 추가  POST - http://localhost:8080/api/lost/like
+    // 동시에 좋아요 갯수 추가 (LostDAO에 쿼리문 작성 )
+    // 동시에 좋아요 갯수 중복 처리 (LostLikeDAO에 쿼리문 작성 )
     @PostMapping("/lost/like")
-    public ResponseEntity<LostLike> createLostLike(@RequestBody LostLike lostLike){
-         return ResponseEntity.status(HttpStatus.OK).body(lostlike.create(lostLike));
+    public ResponseEntity<LostLike> createLostLike(@RequestBody LostLike lostlike){
+        LostLike target = lostlikeservice.noDoubleLike(lostlike.getLost().getMember().getId(), lostlike.getLost().getLostCode());
+
+
+         if(target==null){
+             service.updatelike(lostlike.getLost().getLostCode());
+             return ResponseEntity.status(HttpStatus.OK).body(lostlikeservice.create(lostlike));
+         }
+         return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+
     }
     // 분실 신고 좋아요 삭제 DELETE - http://localhost:8080/api/lost/like/{lostLikeCode}
-    @DeleteMapping("lost/like/{id}")
+    // 좋아요 갯수 차감 (LostDAO에 쿼리문 작성 )
+    // 동시에 좋아요 갯수 중복 처리 (LostLikeDAO에 쿼리문 작성 )
+    @DeleteMapping("/lost/like/{id}")
     public ResponseEntity<LostLike> deleteLostLike(@PathVariable int lostLikeCode){
-         return ResponseEntity.status(HttpStatus.OK).body(lostlike.delete(lostLikeCode));
-    }
-    //좋아요 갯수 처리 (쿼리문 update 로 좋아요 카운트가 하나씩 추가  )
-    // 좋아요 갯수 취소
 
+         LostLike lostlike = lostlikeservice.showLostLike(lostLikeCode);
+         LostLike target = lostlikeservice.noDoubleLike(lostlike.getLost().getMember().getId(), lostlike.getLost().getLostCode());
+
+         if(target!=null){
+             service.deletelike(lostlike.getLost().getLostCode());
+             return ResponseEntity.status(HttpStatus.OK).body(lostlikeservice.delete(lostLikeCode));
+         }
+             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+    }
+
+     // 댓글수 별 게시글 정렬 Get - http://localhost:8080/api/lost/sortcomment
+     @GetMapping("/lost/sortcomment")
+    public ResponseEntity <List<Lost>> sortCommentCount(){
+        return  ResponseEntity.status(HttpStatus.OK).body(service.sortCommentCount());
+     }
+
+     // 좋아요수 별 게시글 정렬 Get - http://localhost:8080/api/lost/sortlike
+    @GetMapping("/lost/sortlike")
+    public ResponseEntity <List<Lost>> sortLostLike(){
+         return ResponseEntity.status(HttpStatus.OK).body(service.sortLostLike());
+    }
 
 
 }

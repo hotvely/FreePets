@@ -8,6 +8,8 @@ import java.util.List;
 
 public interface LostCommentDAO extends JpaRepository<LostComment,Integer> {
    //  SELECT * FROM LOST_COMMENT WHERE LOST_CODE = ?
-    @Query(value = "SELECT * FROM LOST_COMMENT WHERE LOST_CODE = ?", nativeQuery = true)
+    @Query(value = "SELECT * FROM LOST_COMMENT WHERE LOST_CODE = :code", nativeQuery = true)
     List<LostComment> findByLostCode(int code);
+
+
 }

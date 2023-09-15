@@ -38,6 +38,8 @@ public class Lost {
     private char lostReportYN;
     @Column(name="LOST_LIKE")
     private int lostLike;
+    @Column(name="LOST_COMMENT_COUNT")
+    private int lostCommentCount;
 
     @ManyToOne
     @JoinColumn(name="id")

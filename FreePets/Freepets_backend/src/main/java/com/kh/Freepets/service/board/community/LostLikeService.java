@@ -47,4 +47,9 @@ public class LostLikeService {
         dao.delete(target);
         return target;
     }
+
+    public LostLike noDoubleLike(String id, int lostCode){
+        LostLike lostlike = dao.noDoubleLike(id, lostCode);
+        return lostlike;
+    }
 }
