@@ -19,6 +19,10 @@ public class CommunityService {
         return commonDAO.findById(id).orElse(null);
     }
 
+    public List<Community> findByMemberId (String id){
+        return commonDAO.findByMemberId(id);
+    }
+
     public Community create(Community common){
         return commonDAO.save(common);
     }

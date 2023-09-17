@@ -1,7 +1,6 @@
 package com.kh.Freepets.service.board.community;
 
 import com.kh.Freepets.domain.board.community.CommunityComment;
-import com.kh.Freepets.domain.member.Member;
 import com.kh.Freepets.repo.board.community.CommunityCommentDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,7 +18,10 @@ public class CommunityCommentService {
     public CommunityComment showCommonComment(int id) {
         return commonCommentDAO.findById(id).orElse(null);
     }
-    public List<>
+
+    public List<CommunityComment> findByCommonCode (int code){
+        return commonCommentDAO.findByCommonCode(code);
+    }
 
     public CommunityComment create(CommunityComment commonComment){
         return commonCommentDAO.save(commonComment);

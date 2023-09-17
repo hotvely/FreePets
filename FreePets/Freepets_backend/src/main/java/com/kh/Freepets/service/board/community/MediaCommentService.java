@@ -19,6 +19,10 @@ public class MediaCommentService {
         return mediaCommentDAO.findById(id).orElse(null);
     }
 
+    public List<MediaComment> findByMediaCode (int code){
+        return mediaCommentDAO.findByMediaCode(code);
+    }
+
     public MediaComment create(MediaComment mediaComment){
         return mediaCommentDAO.save(mediaComment);
     }

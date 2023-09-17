@@ -19,6 +19,10 @@ public class MediaService {
         return mediaDAO.findById(id).orElse(null);
     }
 
+    public List<Media> findByMemberId (String id){
+        return mediaDAO.findByMemberId(id);
+    }
+
     public Media create(Media mediaLike){
         return mediaDAO.save(mediaLike);
     }
