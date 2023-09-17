@@ -30,10 +30,13 @@ public class MediaComment {
     @Column(name = "M_COMMENT_ADD_FILE_URL")
     private String mediaCommentAddFileUrl;
 
+    // 댓글 신고
+
     @ManyToOne
-    @JoinColumn(name = "M_COMMENT_CODE")
+    @JoinColumn(name = "MEDIA_CODE")
     private Media midea;
     @ManyToOne
     @JoinColumn(name="ID")
     private Member member;
+    //private Report report;
 }

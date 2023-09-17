@@ -32,9 +32,14 @@ public class Community {
     @Column(name="COMMON_YOUTUBE_URL")
     private String youtubeUrl;
 
+    //좋아요 -> 개수 처리용
+    //댓글 좋아요
+    //신고
+
+
     @ManyToOne
     @JoinColumn(name="ID")
     private Member member;
-    //신고 만들어줘
+    ////private Report report; 신고 만들어줘
 
 }

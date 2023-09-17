@@ -5,7 +5,6 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.DynamicInsert;
 
 @Data
 @Entity
@@ -19,7 +18,7 @@ public class MediaLike {
     private int mediaLikeCode;
 
     @ManyToOne
-    @JoinColumn(name = "M_COMMENT_CODE")
+    @JoinColumn(name = "MEDIA_CODE")
     private Media media;
     @ManyToOne
     @JoinColumn(name="ID")

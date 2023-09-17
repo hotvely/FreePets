@@ -29,6 +29,8 @@ public class CommunityComment {
     @Column(name="C_COMMENT_ADD_FILE_URL")
     private String commonCommentAddFileUrl;
 
+    // 댓글 신고
+
     @ManyToOne
     @JoinColumn(name="COMMON_CODE")
     private Community community;
@@ -36,4 +38,5 @@ public class CommunityComment {
     @JoinColumn(name="ID")
     private Member member;
 
+    //private Report report;
 }

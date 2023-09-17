@@ -39,10 +39,14 @@ public class Media {
     @Column(name="MEDIA_CATEGORY")
     private String category;
 
+    //좋아요 -> 개수 처리용
+    //댓글 좋아요
+    //신고
+
     @ManyToOne
     @JoinColumn(name="ID")
     private Member member;
-    //private Report report; 신고 뉘기야
+    //private Report report;
 
 
 }
