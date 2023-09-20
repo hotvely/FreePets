@@ -10,7 +10,7 @@ import java.util.List;
 public interface NoticeDAO extends JpaRepository<Notice, Integer>
 {
     @Query(value = "SELECT * FROM notice WHERE notice_code = :code", nativeQuery = true)
-    List<Notice> showNoticeAll(int noticeCode);
+    List<Notice> showNoticeAll(int code);
 
-
+    @Query(value = "SELECT FROM notice WHERE notice_code", nativeQuery = true)
 }

@@ -21,7 +21,8 @@ public class NoticeController
 
     @GetMapping("/notice")
     public ResponseEntity<List<Notice>> showNoticeAll(){
-        return ResponseEntity.status((HttpStatus.OK).body(service.showNoticeAll());
+        List<Notice> notices = service.showNoticeAll();
+        return ResponseEntity.OK.body(service.showNoticeAll());
 
     }
 
