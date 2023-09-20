@@ -17,12 +17,19 @@ public class EventService {
         return dao.showEventAll(eventCode);
     }
     public Event update(Event event){
-        Event target = EventDAO
+        Event target = EventDAO.findById(event.getEventCode()).orElse(null);
+        if(target!=null) {
+            return dao.save(event);
+        }
+        return null;
     }
 
     public Event delete(int id){
         Event target = dao.findById(id).orElse(null);
-        EventDAO.delete(target);
+        dao.delete(target);
         return target;
+    }
+    public Event create(Event event) {
+        return dao.save(event);
     }
 }
