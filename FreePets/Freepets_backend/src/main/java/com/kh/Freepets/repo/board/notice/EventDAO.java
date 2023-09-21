@@ -12,5 +12,6 @@ public interface EventDAO extends JpaRepository<Event, Integer> {
     @Query(value = "SELECT * FROM event WHERE event_code = :code", nativeQuery = true)
     List<Event> showEventAll(int eventCode);
 
-    @Query(value = "SELECT FROM event WHERE event_code = "),native
+    @Query(value = "SELECT * FROM event WHERE event_code = :code", nativeQuery = true)
+
 }
