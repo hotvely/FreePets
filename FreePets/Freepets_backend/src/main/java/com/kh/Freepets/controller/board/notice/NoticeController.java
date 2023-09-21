@@ -5,10 +5,7 @@ import com.kh.Freepets.service.board.notice.NoticeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -17,17 +14,20 @@ import java.util.List;
 public class NoticeController
 {
     @Autowired
-    public NoticeService service;
+    private NoticeService notice;
 
     @GetMapping("/notice")
     public ResponseEntity<List<Notice>> showNoticeAll(){
-        List<Notice> notices = service.showNoticeAll();
-        return ResponseEntity.OK.body(service.showNoticeAll());
+
+        return ResponseEntity.status(HttpStatus.OK).body(notice.showNoticeAll());
 
     }
 
-    @GetMapping("/notice")
-    public ResponseEntity<Notice>show(@PathVariable int id){
-        return ResponseEntity.status(HttpStatus.OK).body(service)
+    @PostMapping("/notice/{id}")
+    public ResponseEntity<Notice> createNotice(){
+        return ResponseEntity.status(HttpStatus.OK).body(notice.)
     }
 }
+
+    @DeleteMapping("/notice/{id}")
+    public
